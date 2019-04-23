@@ -1,0 +1,52 @@
+<p>
+  sandwich works!
+</p>
+
+<div>
+  <label for="name">Inflation</label><br>
+  <input type="number" class="form-control" [(ngModel)]="inflation" (change)="setInflation(inflation)" >
+</div><br> 
+
+
+<div class="tab">
+  <button class="tablinks" (click)="onTabSelect('menu')">Menu</button>
+  <button class="tablinks" (click)="onTabSelect('custom')">Custom</button>
+</div>
+
+<div id="Menu" class="tabcontent" [class.tabhide]="!menuTabActive" >
+  <ul class="sandwiches"> 
+    <li *ngFor="let sandwich of sandwiches" (click)="onSelect(sandwich)">
+      <span class="title">{{sandwich.name}}</span><br>
+      <span class="ingredients" *ngFor="let ingredient of sandwich.ingredients"> {{ingredient}}  </span><br>
+      <span class="price">R${{sandwich.price}}</span><br>
+    </li>
+  </ul>
+</div>
+
+<div id="Custom" class="tabcontent" [class.tabhide]="menuTabActive" >
+  <h1>Sandwich Form</h1>
+  <p>Set the ingredients of your awesome sandwich!</p>
+  <div>
+    <label for="name">Lettuce (R$0.40 per serving)</label><br>
+    <input type="text" class="form-control" [(ngModel)]="customSandwich.lettuce" (change)="setIngredient()">
+  </div><br> 
+  <div>
+    <label for="name">Egg (R$0.80 per serving)</label><br>
+    <input type="text" class="form-control" [(ngModel)]="customSandwich.egg" (change)="setIngredient()">
+  </div><br>
+  <div>
+    <label for="name">Cheese (R$1.50 per serving)</label><br>
+    <input type="text" class="form-control" [(ngModel)]="customSandwich.cheese" (change)="setIngredient()">
+  </div><br>
+  <div>
+    <label for="name">Bacon (R$2.00 per serving)</label><br>
+    <input type="text" class="form-control" [(ngModel)]="customSandwich.bacon" (change)="setIngredient()">
+  </div><br>
+  <div>
+    <label for="name">Meat (R$3.00 per serving)</label><br>
+    <input type="text" class="form-control" [(ngModel)]="customSandwich.meat" (change)="setIngredient()">
+  </div>
+  <p>price: R${{customPrice}}</p>
+  
+
+</div>
