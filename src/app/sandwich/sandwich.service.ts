@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { CustomSandwichPayload } from './custom-sandwich';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,11 +24,11 @@ export class SandwichService {
 
   constructor(private http: HttpClient) { }
 
-  public getSandwichList(inflation: number = 1.0) {
+  public getSandwichList(inflation: number = 1.0): Observable<any> {
     return this.http.post(this.GET_ALL_SANDWICHES_URL, {inflation}, this.httpOptions);
   }
 
-  public getSandwichPrice(inflation: number = 1.0, content: CustomSandwichPayload): any {
+  public getSandwichPrice(content: CustomSandwichPayload, inflation: number = 1.0, ): any {
     const body = {
       inflation,
       content

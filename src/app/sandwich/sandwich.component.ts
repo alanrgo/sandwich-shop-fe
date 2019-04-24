@@ -17,7 +17,7 @@ export class SandwichComponent implements OnInit {
   public inflation: number;
   public customPrice: number;
 
-  constructor(private sandwichService: SandwichService) {
+  constructor(public sandwichService: SandwichService) {
     this.sandwiches = [];
     this.customSandwich = new CustomSandwichPayload();
     this.inflation = 1.0;
@@ -31,12 +31,11 @@ export class SandwichComponent implements OnInit {
   public getSandwichList(inflation: number = 1.0) {
     this.sandwichService.getSandwichList(inflation).subscribe(list => {
       this.sandwiches = list;
-      console.log(this.sandwiches);
     });
   }
 
   public getSandwichPrice(inflation: number = 1.0) {
-    this.sandwichService.getSandwichPrice(inflation, this.customSandwich).subscribe(response => {
+    this.sandwichService.getSandwichPrice(this.customSandwich, inflation).subscribe(response => {
       this.customPrice = parseFloat(response.price);
     });
   }
