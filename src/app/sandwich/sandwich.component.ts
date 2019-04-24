@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SandwichService } from './sandwich.service';
 import { Sandwich } from './sandwich';
-import { CustomSandwichPayload } from "./custom-sandwich";
+import { CustomSandwichPayload } from './custom-sandwich' ;
 
 @Component({
   selector: 'app-sandwich',
@@ -46,18 +46,11 @@ export class SandwichComponent implements OnInit {
   }
 
   public onTabSelect(tabName: string): void {
-    console.log(tabName);
-
     if ( tabName === 'custom' ) {
       this.menuTabActive = false;
     } else {
       this.menuTabActive = true;
     }
-
-    console.log(this.menuTabActive);
-
-    // if tab 1: display block => tab 2: display none
-    // else opposite
   }
 
   public setInflation(value: string): void {
